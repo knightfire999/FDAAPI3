@@ -22,7 +22,7 @@ class ItemAdapter(private val itemList: List<Item>) :RecyclerView.Adapter<ItemAd
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.d("Response", "List Count :${itemList.size} ")
+        Log.d("Response", "List Count :${itemList.size}")
         return holder.bind(itemList[position])
     }
 

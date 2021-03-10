@@ -3,8 +3,6 @@ package com.example.fdaapi3.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fdaapi3.R
 import com.example.fdaapi3.helpers.ItemAdapter
@@ -30,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadItems() {
         //initiate the service
         val destinationService = ServiceBuilder.buildService(FoodService::class.java)
-        val requestCall = destinationService.getRecalledItem("report_date:[20040101+TO+20131231]", 10)
+        val requestCall = destinationService.getRecalledItem("classification:Class+III", 10)
         //make network call asynchronously
         requestCall.enqueue(object : Callback<RecalledItem> {
             override fun onResponse(call: Call<RecalledItem>, response: Response<RecalledItem>) {
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                         adapter = ItemAdapter(results)
                     }
                 } else {
-                    Log.d(TAG, response.message())
+                    Log.d(TAG, response.headers().toString())
                 }
             }
             override fun onFailure(call: Call<RecalledItem>, t: Throwable) {
