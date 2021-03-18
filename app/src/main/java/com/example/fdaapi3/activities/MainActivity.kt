@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadItems() {
         //initiate the service
         val destinationService = ServiceBuilder.buildService(FoodService::class.java)
-        val requestCall = destinationService.getRecalledItem("classification:Class+III", 10)
+        val requestCall = destinationService.getRecalledItem("classification:Class+II", 5)
         //make network call asynchronously
         requestCall.enqueue(object : Callback<RecalledItem> {
             override fun onResponse(call: Call<RecalledItem>, response: Response<RecalledItem>) {
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Response", "RecalledItem size : ${results.size}")
                     item_recycler.apply {
                         setHasFixedSize(true)
-                        layoutManager = GridLayoutManager(this@MainActivity, 4)
+                        layoutManager = GridLayoutManager(this@MainActivity, 1)
                         adapter = ItemAdapter(results)
                     }
                 } else {

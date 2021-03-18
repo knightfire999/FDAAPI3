@@ -12,8 +12,6 @@ data class RecalledItem(
 @Parcelize
 data class Item(
         @SerializedName("_id")
-        val country: String,
-        val city: String,
         val address_1: String,
         val reason_for_recall: String,
         val address_2: String,
@@ -31,7 +29,6 @@ data class Item(
         val product_type: String,
         val event_id: String,
         val termination_date: String,
-        val more_code_info: String,
         val recall_initiation_date: String,
         val postal_code: String,
         val voluntary_mandated: String,

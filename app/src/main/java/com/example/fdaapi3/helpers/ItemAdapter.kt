@@ -31,12 +31,10 @@ class ItemAdapter(private val itemList: List<Item>) :RecyclerView.Adapter<ItemAd
     class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
         var itemDate = itemView.findViewById<TextView>(R.id.itemDate)
         var itemTitle = itemView.findViewById<TextView>(R.id.itemTitle)
-        var recallReason = itemView.findViewById<TextView>(R.id.recallReason)
 
         fun bind(item: Item) {
             itemDate.text = item.recall_initiation_date
             itemTitle.text = item.product_description
-            recallReason.text = item.reason_for_recall
             itemView.setOnClickListener {
                 val specificItemIntent = Intent(itemView.context, ItemDetailActivity::class.java)
                 specificItemIntent.putExtra(ItemDetailActivity.EXTRA_ITEM, item)
