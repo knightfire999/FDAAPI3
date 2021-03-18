@@ -3,6 +3,7 @@ package com.example.fdaapi3.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fdaapi3.R
 import com.example.fdaapi3.helpers.ItemAdapter
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("Response", "RecalledItem size : ${results.size}")
                     item_recycler.apply {
                         setHasFixedSize(true)
-                        layoutManager = LinearLayoutManager(this@MainActivity)
+                        layoutManager = GridLayoutManager(this@MainActivity, 4)
                         adapter = ItemAdapter(results)
                     }
                 } else {

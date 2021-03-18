@@ -1,5 +1,6 @@
 package com.example.fdaapi3.helpers
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fdaapi3.R
+import com.example.fdaapi3.activities.ItemDetailActivity
 import com.example.fdaapi3.models.Item
 import com.example.fdaapi3.models.RecalledItem
 import java.util.*
@@ -35,6 +37,11 @@ class ItemAdapter(private val itemList: List<Item>) :RecyclerView.Adapter<ItemAd
             itemDate.text = item.recall_initiation_date
             itemTitle.text = item.product_description
             recallReason.text = item.reason_for_recall
+            itemView.setOnClickListener {
+                val specificItemIntent = Intent(itemView.context, ItemDetailActivity::class.java)
+                specificItemIntent.putExtra(ItemDetailActivity.EXTRA_ITEM, item)
+                itemView.context.startActivity(specificItemIntent)
+            }
         }
 
     }

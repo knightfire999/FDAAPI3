@@ -1,12 +1,17 @@
 package com.example.fdaapi3.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
+@Parcelize
 data class RecalledItem(
     val results : List<Item>,
-)
+) : Parcelable
+@Parcelize
 data class Item(
+        @SerializedName("_id")
         val country: String,
         val city: String,
         val address_1: String,
@@ -31,4 +36,4 @@ data class Item(
         val postal_code: String,
         val voluntary_mandated: String,
         val status: String,
-)
+) : Parcelable
