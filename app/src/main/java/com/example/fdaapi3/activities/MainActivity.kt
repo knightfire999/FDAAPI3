@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadItems() {
         //initiate the service
         val destinationService = ServiceBuilder.buildService(FoodService::class.java)
-        val requestCall = destinationService.getRecalledItem("classification:Class+II", 5)
+        val requestCall = destinationService.getRecalledItem("classification:Class+II", 1)
         //make network call asynchronously
         requestCall.enqueue(object : Callback<RecalledItem> {
             override fun onResponse(call: Call<RecalledItem>, response: Response<RecalledItem>) {

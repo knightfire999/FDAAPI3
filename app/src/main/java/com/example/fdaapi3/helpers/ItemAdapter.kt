@@ -11,6 +11,7 @@ import com.example.fdaapi3.R
 import com.example.fdaapi3.activities.ItemDetailActivity
 import com.example.fdaapi3.models.Item
 import com.example.fdaapi3.models.RecalledItem
+import org.w3c.dom.Text
 import java.util.*
 
 class ItemAdapter(private val itemList: List<Item>) :RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
@@ -29,12 +30,19 @@ class ItemAdapter(private val itemList: List<Item>) :RecyclerView.Adapter<ItemAd
     }
 
     class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
-        var itemDate = itemView.findViewById<TextView>(R.id.itemDate)
-        var itemTitle = itemView.findViewById<TextView>(R.id.itemTitle)
+        var type = itemView.findViewById<TextView>(R.id.type)
+        var description = itemView.findViewById<TextView>(R.id.description)
+        var reason = itemView.findViewById<TextView>(R.id.reason)
+        var state = itemView.findViewById<TextView>(R.id.state)
+        var address1 = itemView.findViewById<TextView>(R.id.address1)
 
         fun bind(item: Item) {
-            itemDate.text = item.recall_initiation_date
-            itemTitle.text = item.product_description
+            type.text = item.product_type
+            description.text = item.product_description
+            reason.text = item.reason_for_recall
+            state.text = item.state
+            address1.text = item.address_1
+
             itemView.setOnClickListener {
                 val specificItemIntent = Intent(itemView.context, ItemDetailActivity::class.java)
                 specificItemIntent.putExtra(ItemDetailActivity.EXTRA_ITEM, item)
